@@ -20,12 +20,10 @@ const index = () => {
     return (
         <View className="mt-2" style={{ paddingTop: safeArea.top }}>
             <Text className="text-xl font-bold px-4 mb-2">
-                HomeScreen
+                MoviesApp
             </Text>
 
             <MainSlideshow movies={nowPlayingQuery.data ?? []} />
-
-            <Text className="text-xl font-bold text-blue-500">{JSON.stringify(nowPlayingQuery.data)}</Text>
 
         </View>
     )
