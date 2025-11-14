@@ -20,7 +20,7 @@ const MainSlideshow = ({ movies }: Props) => {
                 ref={ref}
                 data={movies}
                 renderItem={({ item }) =>
-                    <MoviePoster id={item.id} poster={item.poster} smallPoster={false} />}
+                    <MoviePoster id={item.id} poster={item.poster} />}
                 width={200}
                 height={350}
                 style={{

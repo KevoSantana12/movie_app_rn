@@ -3,11 +3,12 @@ import React from 'react'
 import { useMovies } from "presentation/hooks/useMovies";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import MainSlideshow from "presentation/components/MainSlideshow";
+import MovieHorizontalList from "presentation/components/MovieHorizontalList";
 
 const index = () => {
 
     const safeArea = useSafeAreaInsets()
-    const { nowPlayingQuery } = useMovies()
+    const { nowPlayingQuery, popularQuery, topRatedQuery, upcomingQuery } = useMovies()
 
     if (nowPlayingQuery.isLoading) {
         return (
@@ -19,11 +20,29 @@ const index = () => {
 
     return (
         <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-            <Text className="text-xl font-bold px-4 mb-2">
-                MoviesApp
-            </Text>
+            <MainSlideshow
+                movies={nowPlayingQuery.data ?? []}
 
-            <MainSlideshow movies={nowPlayingQuery.data ?? []} />
+            />
+
+            <MovieHorizontalList
+                title="Populares"
+                movies={popularQuery.data ?? []}
+                className="mb-5"
+            />
+
+            <MovieHorizontalList
+                title="Mejores calificadas"
+                movies={topRatedQuery.data ?? []}
+                className="mb-5"
+            />
+
+            <MovieHorizontalList
+                title="Proximos estrenos"
+                movies={upcomingQuery.data ?? []}
+                className="mb-5"
+            />
+
 
         </View>
     )
