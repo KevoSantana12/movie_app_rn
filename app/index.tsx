@@ -33,8 +33,9 @@ const index = () => {
 
             <MovieHorizontalList
                 title="Mejores calificadas"
-                movies={topRatedQuery.data ?? []}
+                movies={topRatedQuery.data?.pages.flat() ?? []}
                 className="mb-5"
+                loadNextPage={topRatedQuery.fetchNextPage}
             />
 
             <MovieHorizontalList
