@@ -4,6 +4,7 @@ import { useLocalSearchParams } from 'expo-router'
 import { getMovieByIdAction } from 'core/actions/movie/get-movie-by-id.action'
 import { useMovie } from 'presentation/hooks/useMovie'
 import MovieHeader from 'presentation/components/Movie/MovieHeader'
+import MovieDescription from 'presentation/components/Movie/MovieDescription'
 
 const MovieScreen = () => {
     const { id } = useLocalSearchParams()
@@ -26,6 +27,8 @@ const MovieScreen = () => {
                 poster={movieQuery.data?.poster}
                 title={movieQuery.data?.title}
             />
+
+            <MovieDescription movie={movieQuery.data} />
         </ScrollView>
     )
 }
